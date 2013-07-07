@@ -38,4 +38,5 @@
 
   "All together now!"
   (= "Test Testerson, 123 Test Lane, Testerville, TX"
-     (___ ["Test" "Testerson"] test-address)))
+     (#(let [{:keys [street-address city state]} %2]
+         (str (clojure.string/join " " %1) ", " street-address ", " city ", " state)) ["Test" "Testerson"] test-address)))
